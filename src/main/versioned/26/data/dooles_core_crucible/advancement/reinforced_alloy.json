@@ -1,0 +1,35 @@
+{
+  "parent": "dooles_core_crucible:netherite",
+  "display": {
+    "icon": {
+      "id": "dooles_core_crucible:reinforced_alloy_ingot"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.reinforced_alloy.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.reinforced_alloy.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "dooles_core_crucible:reinforced_alloy_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ingot"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

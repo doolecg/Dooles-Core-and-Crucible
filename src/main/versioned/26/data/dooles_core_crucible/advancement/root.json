@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:smithing_table"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.root.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.root.description"
+    },
+    "frame": "task",
+    "background": "minecraft:block/deepslate_tiles",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "wooden": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:wooden_pickaxe",
+              "minecraft:wooden_axe",
+              "minecraft:wooden_sword"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "wooden"
+    ]
+  ]
+}

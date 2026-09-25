@@ -1,0 +1,43 @@
+{
+  "parent": "dooles_core_crucible:emerald",
+  "display": {
+    "icon": {
+      "id": "minecraft:diamond_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.diamond.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.diamond.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:diamond_pickaxe",
+              "minecraft:diamond_axe",
+              "minecraft:diamond_shovel",
+              "minecraft:diamond_hoe",
+              "minecraft:diamond_sword",
+              "minecraft:diamond_spear",
+              "dooles_core_crucible:diamond_mace"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "diamond"
+    ]
+  ],
+  "rewards": {
+    "experience": 40
+  }
+}

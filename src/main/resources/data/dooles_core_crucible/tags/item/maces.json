@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:wooden_mace",
+    "dooles_core_crucible:copper_mace",
+    "dooles_core_crucible:iron_mace",
+    "dooles_core_crucible:emerald_mace",
+    "dooles_core_crucible:diamond_mace",
+    "dooles_core_crucible:obsidian_mace",
+    "dooles_core_crucible:netherite_mace",
+    "dooles_core_crucible:reinforced_mace"
+  ]
+}

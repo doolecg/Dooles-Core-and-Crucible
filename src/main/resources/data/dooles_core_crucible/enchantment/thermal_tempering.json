@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.dooles_core_crucible.thermal_tempering"
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 10
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#minecraft:enchantable/durability",
+  "weight": 2,
+  "exclusive_set": "minecraft:mending"
+}

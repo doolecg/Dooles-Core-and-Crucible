@@ -1,0 +1,43 @@
+{
+  "parent": "dooles_core_crucible:reinforced_alloy",
+  "display": {
+    "icon": {
+      "id": "dooles_core_crucible:reinforced_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.reinforced.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.reinforced.description"
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "reinforced": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dooles_core_crucible:reinforced_pickaxe",
+              "dooles_core_crucible:reinforced_axe",
+              "dooles_core_crucible:reinforced_shovel",
+              "dooles_core_crucible:reinforced_hoe",
+              "dooles_core_crucible:reinforced_sword",
+              "dooles_core_crucible:reinforced_spear",
+              "dooles_core_crucible:reinforced_mace"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "reinforced"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

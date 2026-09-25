@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:copper_block",
+    "#": "minecraft:stick"
+  },
+  "pattern": [
+    "C",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "id": "dooles_core_crucible:copper_mace"
+  }
+}

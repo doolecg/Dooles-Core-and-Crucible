@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "#c:gems",
+      "required": false
+    },
+    "minecraft:diamond",
+    "minecraft:emerald",
+    "minecraft:lapis_lazuli",
+    "minecraft:quartz",
+    "minecraft:amethyst_shard",
+    "minecraft:prismarine_crystals"
+  ]
+}

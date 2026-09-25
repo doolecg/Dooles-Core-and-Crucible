@@ -1,0 +1,74 @@
+{
+  "parent": "dooles_core_crucible:copper_age",
+  "display": {
+    "icon": {
+      "id": "minecraft:copper_chestplate"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.copper_armor.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.copper_armor.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_helmet"
+          }
+        ]
+      }
+    },
+    "chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_chestplate"
+          }
+        ]
+      }
+    },
+    "leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_leggings"
+          }
+        ]
+      }
+    },
+    "boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:copper_boots"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "helmet"
+    ],
+    [
+      "chestplate"
+    ],
+    [
+      "leggings"
+    ],
+    [
+      "boots"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  }
+}

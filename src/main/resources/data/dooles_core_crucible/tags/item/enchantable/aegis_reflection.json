@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:chest_armor",
+    "#dooles_core_crucible:shields"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld_mace",
+  "textures": {
+    "layer0": "dooles_core_crucible:item/emerald_mace"
+  }
+}

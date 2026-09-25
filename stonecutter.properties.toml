@@ -1,0 +1,89 @@
+# Build settings for every target. Top-level keys apply everywhere; [fabric], [neoforge] and ["<version>"] tables
+# override them per loader or Minecraft version. Bump mod.version here for a release.
+
+# general
+mod.id = "dooles_core_crucible"
+mod.name = "Doole's Core & Crucible"
+mod.group = "dev.doole.corecrucible"
+mod.package = "dev.doole.corecrucible"
+mod.version = "0.2.0"
+mod.description = "Tiered tool, weapon and armor progression with alloy smithing, catalysts, custom enchantments and vanilla-style ore veins."
+mod.authors = "doole"
+mod.contributors = ""
+mod.license = "MIT"
+
+# links
+mod.sources_url = ""
+mod.homepage_url = ""
+mod.issues_url = ""
+mod.discord_url = ""
+
+# publishing
+publish.modrinth = ""
+publish.curseforge = ""
+publish.env.mr = "CLIENT_AND_SERVER" #https://modmuss50.github.io/mod-publish-plugin/platforms/modrinth/#all-options
+publish.env.cf.client = true
+publish.env.cf.server = true
+publish.dry_run = true
+
+# loom
+loomx.loom_version = "1.17-SNAPSHOT"
+
+# dependencies
+loader.fabric = "0.19.5"
+dev.runtime_optionals = ["jei"]
+# Optional integration: JEI from maven.blamejared.com
+dep.jei.coords = "mezz.jei:jei-$mc-$loader:$version"
+# JEI 19 on Fabric needs the mezz_config mod at runtime (NeoForge JEI bundles it)
+dep.mezz_config.coords = "net.mezzdev.config:mezz_config-$mc-$loader:$version"
+# WorldEdit in dev runs only (runClient/runServer), for looking at ore veins; one jar serves both loaders.
+# Versions are Modrinth version ids: 7.3.8 (1.21.1), 7.4.5 (26.2), 7.4.6-beta-02 (26.3)
+dep.worldedit.coords = "maven.modrinth:worldedit:$version"
+
+[fabric]
+dep.fabric-api.coords = "net.fabricmc.fabric-api:$id:$version"
+
+[neoforge]
+
+
+["1.21.1"]
+mod.mc_releases = ["1.21", "1.21.1"]
+loader.neo = "21.1.251"
+optional.jei = "19.56.0.441"
+runtime.worldedit = "WTAFvuRx"
+
+[fabric."1.21.1"]
+mod.mc_compat = ">=1.21 <=1.21.1"
+required.fabric-api = "0.116.17+1.21.1"
+runtime.mezz_config = "0.5.12"
+
+[neoforge."1.21.1"]
+mod.mc_compat = "[1.21, 1.21.1]"
+
+
+["26.2"]
+mod.mc_releases = ["26.2"]
+loader.neo = "26.2.0.88"
+optional.jei = "30.38.0.226"
+runtime.worldedit = "6YnCYPwc"
+
+[fabric."26.2"]
+mod.mc_compat = "~26.2"
+required.fabric-api = "0.161.0+26.2"
+
+[neoforge."26.2"]
+mod.mc_compat = "[26.2, 26.3)"
+
+
+["26.3"]
+mod.mc_releases = ["26.3"]
+loader.neo = "26.3.0.16-beta"
+optional.jei = "31.7.0.32"
+runtime.worldedit = "E7sbeRFx"
+
+[fabric."26.3"]
+mod.mc_compat = "~26.3"
+required.fabric-api = "0.161.0+26.3"
+
+[neoforge."26.3"]
+mod.mc_compat = "[26.3, 26.4)"

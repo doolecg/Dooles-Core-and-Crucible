@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bone"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "dooles_core_crucible:tool/bone_axe"
+    ]
+  }
+}

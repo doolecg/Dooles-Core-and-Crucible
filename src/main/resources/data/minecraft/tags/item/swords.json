@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:bone_sword",
+    "dooles_core_crucible:flint_sword",
+    {
+      "id": "dooles_core_crucible:copper_sword",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_sword",
+    "dooles_core_crucible:obsidian_sword",
+    "dooles_core_crucible:reinforced_sword"
+  ]
+}

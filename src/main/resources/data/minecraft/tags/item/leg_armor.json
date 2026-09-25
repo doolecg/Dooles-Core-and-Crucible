@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dooles_core_crucible:copper_leggings",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_leggings",
+    "dooles_core_crucible:obsidian_leggings",
+    "dooles_core_crucible:reinforced_leggings"
+  ]
+}

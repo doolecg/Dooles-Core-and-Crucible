@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "dooles_core_crucible:netherite_alloy_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "dooles_core_crucible:smithing/netherite_pickaxe"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "parent": "dooles_core_crucible:copper_age",
+  "display": {
+    "icon": {
+      "id": "dooles_core_crucible:iron_alloy_ingot"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.first_alloy.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.first_alloy.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "dooles_core_crucible:iron_alloy_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ingot"
+    ]
+  ],
+  "rewards": {
+    "experience": 10
+  }
+}

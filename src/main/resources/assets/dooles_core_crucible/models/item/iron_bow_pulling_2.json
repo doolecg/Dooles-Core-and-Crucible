@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "dooles_core_crucible:item/iron_bow_pulling_2"
+  }
+}

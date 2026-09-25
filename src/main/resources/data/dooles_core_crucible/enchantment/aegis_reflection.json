@@ -1,0 +1,21 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.dooles_core_crucible.aegis_reflection"
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 10
+  },
+  "slots": [
+    "chest",
+    "hand"
+  ],
+  "supported_items": "#dooles_core_crucible:enchantable/aegis_reflection",
+  "weight": 2
+}

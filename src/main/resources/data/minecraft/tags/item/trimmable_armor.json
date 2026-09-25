@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dooles_core_crucible:copper_helmet",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_helmet",
+    "dooles_core_crucible:obsidian_helmet",
+    "dooles_core_crucible:reinforced_helmet",
+    {
+      "id": "dooles_core_crucible:copper_chestplate",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_chestplate",
+    "dooles_core_crucible:obsidian_chestplate",
+    "dooles_core_crucible:reinforced_chestplate",
+    {
+      "id": "dooles_core_crucible:copper_leggings",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_leggings",
+    "dooles_core_crucible:obsidian_leggings",
+    "dooles_core_crucible:reinforced_leggings",
+    {
+      "id": "dooles_core_crucible:copper_boots",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_boots",
+    "dooles_core_crucible:obsidian_boots",
+    "dooles_core_crucible:reinforced_boots"
+  ]
+}

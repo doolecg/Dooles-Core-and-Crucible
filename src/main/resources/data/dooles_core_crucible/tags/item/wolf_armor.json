@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:wolf_armor",
+    "dooles_core_crucible:iron_wolf_armor",
+    "dooles_core_crucible:emerald_wolf_armor",
+    "dooles_core_crucible:diamond_wolf_armor",
+    "dooles_core_crucible:obsidian_wolf_armor",
+    "dooles_core_crucible:netherite_wolf_armor",
+    "dooles_core_crucible:reinforced_wolf_armor"
+  ]
+}

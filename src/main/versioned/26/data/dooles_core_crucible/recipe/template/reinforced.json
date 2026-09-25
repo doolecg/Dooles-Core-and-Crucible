@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "minecraft:paper",
+    "T": "minecraft:netherite_upgrade_smithing_template",
+    "X": "minecraft:nether_star"
+  },
+  "pattern": [
+    "PTP",
+    "PXP",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "dooles_core_crucible:reinforced_upgrade_smithing_template"
+  }
+}

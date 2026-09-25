@@ -1,0 +1,46 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:using_item",
+    "on_false": {
+      "type": "minecraft:special",
+      "base": "dooles_core_crucible:item/copper_shield",
+      "model": {
+        "type": "dooles_core_crucible:shield",
+        "tier": "copper"
+      }
+    },
+    "on_true": {
+      "type": "minecraft:special",
+      "base": "dooles_core_crucible:item/copper_shield_blocking",
+      "model": {
+        "type": "dooles_core_crucible:shield",
+        "tier": "copper"
+      }
+    },
+    "transformation": {
+      "left_rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "right_rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "scale": [
+        1.0,
+        -1.0,
+        -1.0
+      ],
+      "translation": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "parent": "dooles_core_crucible:diamond",
+  "display": {
+    "icon": {
+      "id": "dooles_core_crucible:obsidian_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.obsidian.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.obsidian.description"
+    },
+    "frame": "goal"
+  },
+  "criteria": {
+    "obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dooles_core_crucible:obsidian_pickaxe",
+              "dooles_core_crucible:obsidian_axe",
+              "dooles_core_crucible:obsidian_shovel",
+              "dooles_core_crucible:obsidian_hoe",
+              "dooles_core_crucible:obsidian_sword",
+              "dooles_core_crucible:obsidian_spear",
+              "dooles_core_crucible:obsidian_mace",
+              "dooles_core_crucible:obsidian_helmet",
+              "dooles_core_crucible:obsidian_chestplate",
+              "dooles_core_crucible:obsidian_leggings",
+              "dooles_core_crucible:obsidian_boots"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obsidian"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

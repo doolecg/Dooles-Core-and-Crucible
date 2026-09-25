@@ -1,0 +1,6 @@
+{
+  "type": "dooles_core_crucible:alloy_smithing",
+  "tier": "diamond",
+  "base": "dooles_core_crucible:emerald_alloy_ingot",
+  "addition": "minecraft:diamond"
+}

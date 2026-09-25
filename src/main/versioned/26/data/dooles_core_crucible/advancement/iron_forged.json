@@ -1,0 +1,43 @@
+{
+  "parent": "dooles_core_crucible:first_alloy",
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.iron_forged.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.iron_forged.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "iron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_pickaxe",
+              "minecraft:iron_axe",
+              "minecraft:iron_shovel",
+              "minecraft:iron_hoe",
+              "minecraft:iron_sword",
+              "minecraft:iron_spear",
+              "dooles_core_crucible:iron_mace"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "iron"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  }
+}

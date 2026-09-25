@@ -1,0 +1,6 @@
+{
+  "type": "dooles_core_crucible:alloy_smithing",
+  "tier": "obsidian",
+  "base": "dooles_core_crucible:diamond_alloy_ingot",
+  "addition": "minecraft:crying_obsidian"
+}

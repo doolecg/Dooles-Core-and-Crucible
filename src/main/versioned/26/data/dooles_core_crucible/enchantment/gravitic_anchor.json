@@ -1,0 +1,31 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.dooles_core_crucible.gravitic_anchor"
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 10
+  },
+  "slots": [
+    "legs",
+    "feet"
+  ],
+  "supported_items": "#dooles_core_crucible:enchantable/gravitic_anchor",
+  "weight": 2,
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "id": "dooles_core_crucible:enchantment.gravitic_anchor",
+        "attribute": "minecraft:explosion_knockback_resistance",
+        "amount": 1.0,
+        "operation": "add_value"
+      }
+    ]
+  }
+}

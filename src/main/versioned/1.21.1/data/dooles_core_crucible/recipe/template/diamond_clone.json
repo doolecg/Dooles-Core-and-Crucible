@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "item": "dooles_core_crucible:diamond_upgrade_smithing_template"
+    },
+    "C": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "dooles_core_crucible:diamond_upgrade_smithing_template"
+  }
+}

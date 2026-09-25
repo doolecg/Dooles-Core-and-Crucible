@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dooles_core_crucible:copper_helmet",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_helmet",
+    "dooles_core_crucible:obsidian_helmet",
+    "dooles_core_crucible:reinforced_helmet"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:crafting_special_shielddecoration",
+  "banner": "#minecraft:banners",
+  "result": {
+    "id": "dooles_core_crucible:emerald_shield"
+  },
+  "target": "dooles_core_crucible:emerald_shield"
+}

@@ -1,0 +1,46 @@
+{
+  "parent": "dooles_core_crucible:root",
+  "display": {
+    "icon": {
+      "id": "dooles_core_crucible:bone_pickaxe",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.first_upgrade.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.first_upgrade.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "tier_one": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "dooles_core_crucible:bone_pickaxe",
+              "dooles_core_crucible:bone_axe",
+              "dooles_core_crucible:bone_shovel",
+              "dooles_core_crucible:bone_hoe",
+              "dooles_core_crucible:bone_sword",
+              "dooles_core_crucible:bone_spear",
+              "dooles_core_crucible:flint_pickaxe",
+              "dooles_core_crucible:flint_axe",
+              "dooles_core_crucible:flint_shovel",
+              "dooles_core_crucible:flint_hoe",
+              "dooles_core_crucible:flint_sword",
+              "dooles_core_crucible:flint_spear"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "tier_one"
+    ]
+  ]
+}

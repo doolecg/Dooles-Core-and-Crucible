@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "X": "minecraft:bone",
+    "#": "minecraft:stick",
+    "S": "minecraft:string",
+    "T": "minecraft:tripwire_hook"
+  },
+  "pattern": [
+    "#X#",
+    "STS",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "dooles_core_crucible:bone_crossbow"
+  }
+}

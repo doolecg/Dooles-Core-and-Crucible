@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:bone_axe",
+    "dooles_core_crucible:flint_axe",
+    {
+      "id": "dooles_core_crucible:copper_axe",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_axe",
+    "dooles_core_crucible:obsidian_axe",
+    "dooles_core_crucible:reinforced_axe"
+  ]
+}

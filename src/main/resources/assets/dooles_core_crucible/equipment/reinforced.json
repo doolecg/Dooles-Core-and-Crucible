@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "dooles_core_crucible:reinforced"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "dooles_core_crucible:reinforced"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "dooles_core_crucible:reinforced"
+      }
+    ],
+    "wolf_body": [
+      {
+        "texture": "dooles_core_crucible:reinforced"
+      }
+    ]
+  }
+}

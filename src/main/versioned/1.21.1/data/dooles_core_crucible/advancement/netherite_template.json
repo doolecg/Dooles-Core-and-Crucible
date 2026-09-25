@@ -1,0 +1,36 @@
+{
+  "parent": "dooles_core_crucible:obsidian",
+  "display": {
+    "icon": {
+      "id": "minecraft:netherite_upgrade_smithing_template",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.netherite_template.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.netherite_template.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "template": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherite_upgrade_smithing_template"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "template"
+    ]
+  ],
+  "rewards": {
+    "experience": 40
+  }
+}

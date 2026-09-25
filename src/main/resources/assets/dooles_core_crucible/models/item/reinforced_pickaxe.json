@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "dooles_core_crucible:item/reinforced_pickaxe"
+  }
+}

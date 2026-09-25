@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#dooles_core_crucible:needs_obsidian_tool",
+    "#dooles_core_crucible:needs_netherite_tool",
+    "#dooles_core_crucible:needs_reinforced_tool"
+  ]
+}

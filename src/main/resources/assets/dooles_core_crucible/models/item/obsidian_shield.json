@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/shield",
+  "textures": {
+    "particle": "dooles_core_crucible:item/obsidian_shield"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "dooles_core_crucible:item/obsidian_shield_blocking"
+    }
+  ]
+}

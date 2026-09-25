@@ -1,0 +1,57 @@
+# Build output
+.gradle/
+build/
+out/
+bin/
+classes/
+.kotlin/
+versions/*.jar
+*.class
+
+# Dev runs
+run/
+runs/
+logs/
+hs_err_*.log
+replay_*.log
+*.hprof
+*.jfr
+
+# IDE / OS
+.idea/
+*.iml
+*.launch
+.vscode/
+.DS_Store
+Thumbs.db
+__pycache__/
+
+# Private notes, plans and docs
+PROGRESS.md
+PLAN.md
+TODO.md
+NOTES.md
+docs/
+tutorial/
+wiki/
+plans/
+.plans/
+ai-plans/
+ai_plans/
+
+# AI assistant files
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+GEMINI.md
+.claude/
+.cursor/
+.cursorrules
+.windsurf/
+.windsurfrules
+.aider*
+.codex/
+.gemini/
+.continue/
+.github/copilot-instructions.md
+*.prompt.md

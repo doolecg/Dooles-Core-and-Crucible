@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dooles_core_crucible:copper_chestplate",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_chestplate",
+    "dooles_core_crucible:obsidian_chestplate",
+    "dooles_core_crucible:reinforced_chestplate"
+  ]
+}

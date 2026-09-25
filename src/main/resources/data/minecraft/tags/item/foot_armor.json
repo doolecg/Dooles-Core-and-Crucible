@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dooles_core_crucible:copper_boots",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_boots",
+    "dooles_core_crucible:obsidian_boots",
+    "dooles_core_crucible:reinforced_boots"
+  ]
+}

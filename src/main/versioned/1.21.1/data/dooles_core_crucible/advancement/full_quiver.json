@@ -1,0 +1,49 @@
+{
+  "parent": "dooles_core_crucible:fletcher",
+  "display": {
+    "icon": {
+      "id": "dooles_core_crucible:reinforced_crossbow",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.full_quiver.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.full_quiver.description"
+    },
+    "frame": "challenge"
+  },
+  "criteria": {
+    "bow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "dooles_core_crucible:reinforced_bow"
+          }
+        ]
+      }
+    },
+    "crossbow": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "dooles_core_crucible:reinforced_crossbow"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bow"
+    ],
+    [
+      "crossbow"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

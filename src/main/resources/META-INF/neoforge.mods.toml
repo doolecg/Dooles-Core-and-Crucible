@@ -1,0 +1,22 @@
+license = "${license}"
+modLoader="javafml"
+loaderVersion="[1,)"
+
+[[mods]]
+modId = "${id}"
+displayName = "${name}"
+version = "${version}"
+authors = "${authors}"
+credits = "${contributors}"
+description = "${description}"
+${logo_key} = "icon.png"
+displayURL = "${homepage_url}"
+issueTrackerURL = "${issues_url}"
+
+[[mixins]]
+config = "${id}.mixins.json"
+
+[[accessTransformers]]
+file="${at}"
+
+${dependencies}

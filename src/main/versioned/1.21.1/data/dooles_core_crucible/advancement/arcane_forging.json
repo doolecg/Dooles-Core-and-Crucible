@@ -1,0 +1,535 @@
+{
+  "parent": "dooles_core_crucible:iron_forged",
+  "display": {
+    "icon": {
+      "id": "minecraft:enchanted_book",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.arcane_forging.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.arcane_forging.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "vein_resonance_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:vein_resonance"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "luminous_ward_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:luminous_ward"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "cavernous_echo_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:cavernous_echo"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "geode_cracker_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:geode_cracker"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "tectonic_pulse_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:tectonic_pulse"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "thermal_tempering_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:thermal_tempering"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "kinetic_resonance_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:kinetic_resonance"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "soul_syphon_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:soul_syphon"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "volatile_payload_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:volatile_payload"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "enders_grasp_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:enders_grasp"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "aegis_reflection_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:aegis_reflection"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "molten_tread_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:molten_tread"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "soul_tether_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:soul_tether"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "gravitic_anchor_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:gravitic_anchor"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "phalanx_ward_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:phalanx_ward"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "vein_resonance_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:vein_resonance"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "luminous_ward_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:luminous_ward"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "cavernous_echo_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:cavernous_echo"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "geode_cracker_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:geode_cracker"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "tectonic_pulse_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:tectonic_pulse"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "thermal_tempering_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:thermal_tempering"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "kinetic_resonance_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:kinetic_resonance"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "soul_syphon_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:soul_syphon"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "volatile_payload_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:volatile_payload"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "enders_grasp_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:enders_grasp"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "aegis_reflection_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:aegis_reflection"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "molten_tread_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:molten_tread"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "soul_tether_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:soul_tether"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "gravitic_anchor_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:gravitic_anchor"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "phalanx_ward_book": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "predicates": {
+              "minecraft:stored_enchantments": [
+                {
+                  "enchantments": "dooles_core_crucible:phalanx_ward"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "vein_resonance_item",
+      "luminous_ward_item",
+      "cavernous_echo_item",
+      "geode_cracker_item",
+      "tectonic_pulse_item",
+      "thermal_tempering_item",
+      "kinetic_resonance_item",
+      "soul_syphon_item",
+      "volatile_payload_item",
+      "enders_grasp_item",
+      "aegis_reflection_item",
+      "molten_tread_item",
+      "soul_tether_item",
+      "gravitic_anchor_item",
+      "phalanx_ward_item",
+      "vein_resonance_book",
+      "luminous_ward_book",
+      "cavernous_echo_book",
+      "geode_cracker_book",
+      "tectonic_pulse_book",
+      "thermal_tempering_book",
+      "kinetic_resonance_book",
+      "soul_syphon_book",
+      "volatile_payload_book",
+      "enders_grasp_book",
+      "aegis_reflection_book",
+      "molten_tread_book",
+      "soul_tether_book",
+      "gravitic_anchor_book",
+      "phalanx_ward_book"
+    ]
+  ],
+  "rewards": {
+    "experience": 30
+  }
+}

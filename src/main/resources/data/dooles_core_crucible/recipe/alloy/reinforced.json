@@ -1,0 +1,6 @@
+{
+  "type": "dooles_core_crucible:alloy_smithing",
+  "tier": "reinforced",
+  "base": "dooles_core_crucible:netherite_alloy_ingot",
+  "addition": "dooles_core_crucible:obsidian_alloy_ingot"
+}

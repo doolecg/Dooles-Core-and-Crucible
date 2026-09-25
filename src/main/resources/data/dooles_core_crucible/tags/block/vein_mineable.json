@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#dooles_core_crucible:ores",
+    "#minecraft:logs",
+    "minecraft:glowstone",
+    "minecraft:amethyst_cluster"
+  ]
+}

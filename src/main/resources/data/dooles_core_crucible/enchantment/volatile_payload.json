@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.dooles_core_crucible.volatile_payload"
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 10
+  },
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#dooles_core_crucible:enchantable/volatile_payload",
+  "weight": 1
+}

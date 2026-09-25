@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "description": "Doole's Core & Crucible resources",
+    ${pack_format}
+  }
+}

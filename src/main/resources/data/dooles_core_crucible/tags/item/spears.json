@@ -1,0 +1,34 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "dooles_core_crucible:wooden_spear",
+      "required": false
+    },
+    "dooles_core_crucible:bone_spear",
+    "dooles_core_crucible:flint_spear",
+    {
+      "id": "dooles_core_crucible:copper_spear",
+      "required": false
+    },
+    {
+      "id": "dooles_core_crucible:iron_spear",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_spear",
+    {
+      "id": "dooles_core_crucible:diamond_spear",
+      "required": false
+    },
+    "dooles_core_crucible:obsidian_spear",
+    {
+      "id": "dooles_core_crucible:netherite_spear",
+      "required": false
+    },
+    "dooles_core_crucible:reinforced_spear",
+    {
+      "id": "dooles_core_crucible:golden_spear",
+      "required": false
+    }
+  ]
+}

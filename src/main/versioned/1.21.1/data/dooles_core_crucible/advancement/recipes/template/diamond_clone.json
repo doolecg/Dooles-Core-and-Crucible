@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ingredient": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diamond"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "dooles_core_crucible:template/diamond_clone"
+    ]
+  }
+}

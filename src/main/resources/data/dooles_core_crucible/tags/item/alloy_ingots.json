@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:iron_alloy_ingot",
+    "dooles_core_crucible:emerald_alloy_ingot",
+    "dooles_core_crucible:diamond_alloy_ingot",
+    "dooles_core_crucible:obsidian_alloy_ingot",
+    "dooles_core_crucible:netherite_alloy_ingot",
+    "dooles_core_crucible:reinforced_alloy_ingot"
+  ]
+}

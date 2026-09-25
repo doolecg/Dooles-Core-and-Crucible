@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:vein_resonance",
+    "dooles_core_crucible:luminous_ward",
+    "dooles_core_crucible:cavernous_echo",
+    "dooles_core_crucible:geode_cracker",
+    "dooles_core_crucible:tectonic_pulse",
+    "dooles_core_crucible:thermal_tempering",
+    "dooles_core_crucible:kinetic_resonance",
+    "dooles_core_crucible:soul_syphon",
+    "dooles_core_crucible:volatile_payload",
+    "dooles_core_crucible:enders_grasp",
+    "dooles_core_crucible:aegis_reflection",
+    "dooles_core_crucible:molten_tread",
+    "dooles_core_crucible:soul_tether",
+    "dooles_core_crucible:gravitic_anchor",
+    "dooles_core_crucible:phalanx_ward"
+  ]
+}

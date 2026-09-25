@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:bow",
+    "dooles_core_crucible:bone_bow",
+    "dooles_core_crucible:flint_bow",
+    "dooles_core_crucible:copper_bow",
+    "dooles_core_crucible:iron_bow",
+    "dooles_core_crucible:emerald_bow",
+    "dooles_core_crucible:diamond_bow",
+    "dooles_core_crucible:obsidian_bow",
+    "dooles_core_crucible:netherite_bow",
+    "dooles_core_crucible:reinforced_bow"
+  ]
+}

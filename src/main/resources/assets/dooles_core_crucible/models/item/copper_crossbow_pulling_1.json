@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/crossbow",
+  "textures": {
+    "layer0": "dooles_core_crucible:item/copper_crossbow_pulling_1"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "T": {
+      "item": "dooles_core_crucible:diamond_upgrade_smithing_template"
+    },
+    "X": {
+      "item": "minecraft:crying_obsidian"
+    }
+  },
+  "pattern": [
+    "PTP",
+    "PXP",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "dooles_core_crucible:obsidian_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.dooles_core_crucible.luminous_ward"
+  },
+  "max_cost": {
+    "base": 50,
+    "per_level_above_first": 10
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 15,
+    "per_level_above_first": 10
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#dooles_core_crucible:enchantable/luminous_ward",
+  "weight": 3
+}

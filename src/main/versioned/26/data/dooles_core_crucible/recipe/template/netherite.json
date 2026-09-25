@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": "minecraft:paper",
+    "T": "dooles_core_crucible:obsidian_upgrade_smithing_template",
+    "X": "minecraft:netherite_ingot"
+  },
+  "pattern": [
+    "PTP",
+    "PXP",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:netherite_upgrade_smithing_template"
+  }
+}

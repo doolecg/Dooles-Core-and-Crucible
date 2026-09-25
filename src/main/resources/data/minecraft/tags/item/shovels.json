@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:bone_shovel",
+    "dooles_core_crucible:flint_shovel",
+    {
+      "id": "dooles_core_crucible:copper_shovel",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_shovel",
+    "dooles_core_crucible:obsidian_shovel",
+    "dooles_core_crucible:reinforced_shovel"
+  ]
+}

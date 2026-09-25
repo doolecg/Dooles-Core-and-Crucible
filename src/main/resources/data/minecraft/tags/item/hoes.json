@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:bone_hoe",
+    "dooles_core_crucible:flint_hoe",
+    {
+      "id": "dooles_core_crucible:copper_hoe",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_hoe",
+    "dooles_core_crucible:obsidian_hoe",
+    "dooles_core_crucible:reinforced_hoe"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "dooles_core_crucible:netherite_template",
+  "display": {
+    "icon": {
+      "id": "minecraft:netherite_pickaxe"
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.netherite.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.netherite.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "netherite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:netherite_pickaxe",
+              "minecraft:netherite_axe",
+              "minecraft:netherite_shovel",
+              "minecraft:netherite_hoe",
+              "minecraft:netherite_sword",
+              "minecraft:netherite_spear",
+              "dooles_core_crucible:netherite_mace"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "netherite"
+    ]
+  ],
+  "rewards": {
+    "experience": 60
+  }
+}

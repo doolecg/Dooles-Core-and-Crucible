@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:bone_fishing_rod",
+    "dooles_core_crucible:flint_fishing_rod",
+    "dooles_core_crucible:copper_fishing_rod",
+    "dooles_core_crucible:iron_fishing_rod",
+    "dooles_core_crucible:emerald_fishing_rod",
+    "dooles_core_crucible:diamond_fishing_rod",
+    "dooles_core_crucible:obsidian_fishing_rod",
+    "dooles_core_crucible:netherite_fishing_rod",
+    "dooles_core_crucible:reinforced_fishing_rod"
+  ]
+}

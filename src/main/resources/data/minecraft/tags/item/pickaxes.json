@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "dooles_core_crucible:bone_pickaxe",
+    "dooles_core_crucible:flint_pickaxe",
+    {
+      "id": "dooles_core_crucible:copper_pickaxe",
+      "required": false
+    },
+    "dooles_core_crucible:emerald_pickaxe",
+    "dooles_core_crucible:obsidian_pickaxe",
+    "dooles_core_crucible:reinforced_pickaxe"
+  ]
+}

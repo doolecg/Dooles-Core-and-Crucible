@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": {
+      "tag": "minecraft:planks"
+    },
+    "X": {
+      "item": "minecraft:flint"
+    }
+  },
+  "pattern": [
+    "WXW",
+    "WWW",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "dooles_core_crucible:flint_shield"
+  }
+}

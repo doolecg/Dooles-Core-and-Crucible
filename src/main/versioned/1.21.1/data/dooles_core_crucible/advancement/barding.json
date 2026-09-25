@@ -1,0 +1,49 @@
+{
+  "parent": "dooles_core_crucible:iron_forged",
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_horse_armor",
+      "count": 1
+    },
+    "title": {
+      "translate": "advancements.dooles_core_crucible.barding.title"
+    },
+    "description": {
+      "translate": "advancements.dooles_core_crucible.barding.description"
+    },
+    "frame": "task"
+  },
+  "criteria": {
+    "body_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:iron_horse_armor",
+              "dooles_core_crucible:iron_wolf_armor",
+              "dooles_core_crucible:emerald_horse_armor",
+              "dooles_core_crucible:emerald_wolf_armor",
+              "minecraft:diamond_horse_armor",
+              "dooles_core_crucible:diamond_wolf_armor",
+              "dooles_core_crucible:obsidian_horse_armor",
+              "dooles_core_crucible:obsidian_wolf_armor",
+              "dooles_core_crucible:netherite_horse_armor",
+              "dooles_core_crucible:netherite_wolf_armor",
+              "dooles_core_crucible:reinforced_horse_armor",
+              "dooles_core_crucible:reinforced_wolf_armor"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "body_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  }
+}
