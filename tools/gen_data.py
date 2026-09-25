@@ -700,7 +700,7 @@ def template_lang():
 # rewrites data/dooles_core_crucible/enchantment/<name>.json. The description is the English text players see.
 ENCHANTMENTS = {
     "vein_resonance": ("Vein Resonance", 3, 4, 2, ["mainhand"], None, {},
-                       "Hold the Vein Resonance key (`) while mining to break a whole shape; scroll to pick one. "
+                       "Hold the Vein Resonance key (Left Alt) while mining to break a whole shape; scroll to pick one. "
                        "More shapes at higher levels."),
     "luminous_ward": ("Luminous Ward", 1, 2, 3, ["any"], None, {}, "Leaves light behind in dark places."),
     "cavernous_echo": ("Cavernous Echo", 2, 4, 2, ["armor"], "#minecraft:enchantable/armor", {},
@@ -730,6 +730,47 @@ ENCHANTMENTS = {
                         "Immune to knock-ups, explosion launches and Levitation."),
     "phalanx_ward": ("Phalanx Ward", 2, 4, 2, ["hand"], None, {}, "Blocking briefly shields nearby allies."),
 }
+# The longer explanation JEI shows on each enchantment's books (jei.<mod>.info.enchantment.<name>). Keep these in step
+# with what enchant/EnchantmentHooks and enchant/VeinMining actually do.
+ENCHANTMENT_INFO = {
+    "vein_resonance": "Mining tools. Hold the Vein Resonance key (Left Alt by default) while mining to break a whole "
+                      "shape at once; scroll while holding it to pick the shape. Level I: Seam (every touching block "
+                      "of the same ore or log) and Bore (a 1-wide hole). Level II adds Facet (a 3x3 face). Level III "
+                      "adds Gallery (a 3x3 tunnel), Drift (a walkable 1x2 tunnel), Rise (stairs up) and Descent "
+                      "(stairs down). Reach is 4, 8 or 12 blocks by level; higher-tier tools break more blocks. "
+                      "Stops before the tool would break.",
+    "luminous_ward": "Armor and mining tools. In dark places, a tool leaves an invisible light where it breaks a "
+                     "block, and armor places one at your feet (1 durability each). The lights stay behind.",
+    "cavernous_echo": "Armor. Taking damage in the dark makes ores within 8 blocks per level glow through walls for "
+                      "6 seconds, for you only. Up to 64 ores; once every 6 seconds.",
+    "geode_cracker": "Pickaxes. Gem drops (diamond, emerald, lapis, quartz, amethyst shards, prismarine crystals) "
+                     "get 0 to 1 extra item per level. Can't be combined with Silk Touch. Doesn't affect items "
+                     "spilled from containers.",
+    "tectonic_pulse": "Pickaxes and shovels. Breaking a block also breaks the sand, gravel and other falling blocks "
+                      "stacked above it, up to 64 high.",
+    "thermal_tempering": "Anything with durability. While you're on fire, in lava or standing on magma, the item "
+                         "repairs 2 durability per level every second. Can't be combined with Mending.",
+    "kinetic_resonance": "Swords, axes, maces and spears. Each hit in a row on the same target within 3 seconds adds "
+                         "10% melee damage, up to 30%, 40% or 50% by level. A new target or a pause resets it.",
+    "soul_syphon": "Weapons. Mobs you kill drop double experience. The weapon takes no durability damage; each hit "
+                   "costs you 2 experience points instead, or half a heart when you have none.",
+    "volatile_payload": "Bows and crossbows. Fully drawn arrows (and every crossbow bolt) explode where they land or "
+                        "hit. The blast hurts mobs but never breaks blocks, and grows with level.",
+    "enders_grasp": "Mining tools and weapons. Blocks you mine and mobs you kill drop straight into your inventory; "
+                    "what doesn't fit lands at your feet.",
+    "aegis_reflection": "Chestplates and shields. Each level gives a 15% chance to send an incoming projectile back. "
+                        "While blocking with an Aegis Reflection shield, projectiles always bounce back.",
+    "molten_tread": "Boots. Lava under you turns to magma for 5 to 8 seconds so you can walk across, in a wider "
+                    "circle at higher levels. Magma doesn't hurt you. It melts back once nobody is standing on it.",
+    "soul_tether": "Weapons. Anything you hit can't teleport for 10 seconds: no ender pearls, chorus fruit or "
+                   "enderman teleports.",
+    "gravitic_anchor": "Leggings and boots. You can't be knocked upward by hits, mace smashes, sonic booms or "
+                       "explosions, and Levitation has no effect. Sideways knockback still applies.",
+    "phalanx_ward": "Shields. Blocking a hit raises a ward for 3 seconds per level. Your teammates, your pets and "
+                    "players attacked by mobs within 3 blocks plus 1 per level take no damage; each hit it stops "
+                    "costs the shield 1 durability.",
+}
+
 # Mod enchantable tags (supported_items = None above). Version-neutral: 1.21.1 lacks enchantable/melee_weapon.
 # Which items each enchantment can go on (item tags).
 ENCHANTABLE = {
@@ -745,9 +786,7 @@ ENCHANTABLE = {
     "gravitic_anchor": ["#minecraft:leg_armor", "#minecraft:foot_armor"],
     "phalanx_ward": [f"#{MOD}:shields"],
 }
-VEIN_SHAPES = {"shapeless": "Shapeless", "small_tunnel": "Small Tunnel", "small_square": "Small Square",
-               "large_tunnel": "Large Tunnel", "mining_tunnel": "Mining Tunnel", "escape_tunnel": "Escape Tunnel",
-               "mineshaft": "Mineshaft"}
+VEIN_SHAPES = {"seam": "Seam", "bore": "Bore", "facet": "Facet", "gallery": "Gallery", "drift": "Drift", "rise": "Rise", "descent": "Descent"}
 
 
 def enchantment(name, fmt=None):
@@ -800,9 +839,7 @@ def enchantment_lang():
         out[f"enchantment.{MOD}.{name}"] = info[0]
         out[f"enchantment.{MOD}.{name}.desc"] = info[-1]
     out[f"key.{MOD}.vein_mine"] = "Vein Resonance"
-    out[f"hud.{MOD}.vein.title"] = "Vein Resonance: %s blocks"
-    out[f"hud.{MOD}.vein.locked"] = "  %s (needs %s)"
-    out[f"hud.{MOD}.vein.scroll"] = "Scroll to change shape"
+    out[f"hud.{MOD}.vein.count"] = "%s blocks"
     out[f"message.{MOD}.tethered"] = "A Soul Tether holds you in place"
     for key, value in VEIN_SHAPES.items():
         out[f"vein_shape.{MOD}.{key}"] = value
@@ -873,7 +910,9 @@ def tooltip_lang():
 def integration_lang():
     """Lang entries for JEI/EMI integration text and the smithing recipe book's filter tooltip."""
     j = f"jei.{MOD}."
-    return {
+    enchantments = {j + "info.enchantment." + name: text for name, text in ENCHANTMENT_INFO.items()}
+    enchantments[j + "info.enchantment.max_level"] = "Max level: %s"
+    return enchantments | {
         j + "crucible_smithing": "Doole's Core & Crucible",
         j + "info.alloy_ingot": "Made in a smithing table from the tier's upgrade template, the previous tier's "
                                 "ingot and the tier's raw material. Upgrades the previous tier's gear in a smithing "

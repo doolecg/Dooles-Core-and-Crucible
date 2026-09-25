@@ -198,6 +198,11 @@ public final class ModItems {
         return typeByItem.get(item);
     }
 
+    /** The mod item registered as {@code mod_id:name}, or null when this version doesn't register it. */
+    public static Item byName(String name) {
+        return ITEMS.get(name);
+    }
+
     /** Every mod item, in registration order. */
     public static Collection<Item> all() {
         return Collections.unmodifiableCollection(ITEMS.values());

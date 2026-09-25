@@ -15,8 +15,14 @@ import dev.doole.corecrucible.registry.ModRecipes;
 import dev.doole.corecrucible.registry.VanillaOverrides;
 //? if >=1.21.2 {
 import dev.doole.corecrucible.registry.ModRecipeBookCategories;
-//?}
+import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
+//?} else {
+/*import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+*///?}
 import dev.kikugie.fletching_table.annotation.fabric.Entrypoint;
+import java.util.List;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
@@ -46,6 +52,25 @@ public class FabricEntrypoint implements ModInitializer {
         *///?}
         ModItems.register((id, item) -> Registry.register(BuiltInRegistries.ITEM, id, item));
         ModCreativeTab.register((id, tab) -> Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, id, tab));
+        // Slots mod items into vanilla's Tools, Combat and Ingredients tabs next to their vanilla neighbours. A missing
+        // anchor makes Fabric append at the end of the tab.
+        ModCreativeTab.vanillaPlacements().forEach((tabKey, placements) ->
+                //? if >=1.21.2 {
+                CreativeModeTabEvents.modifyOutputEvent(tabKey).register(output -> {
+                    for (ModCreativeTab.Placement placement : placements) {
+                        output.insertAfter(placement.anchor() == null ? ItemStack.EMPTY : new ItemStack(placement.anchor()),
+                                List.of(new ItemStack(placement.item())), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                    }
+                })
+                //?} else {
+                /*ItemGroupEvents.modifyEntriesEvent(tabKey).register(entries -> {
+                    for (ModCreativeTab.Placement placement : placements) {
+                        entries.addAfter(placement.anchor() == null ? ItemStack.EMPTY : new ItemStack(placement.anchor()),
+                                List.of(new ItemStack(placement.item())), CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+                    }
+                })
+                *///?}
+        );
         ModRecipes.register((id, serializer) -> Registry.register(BuiltInRegistries.RECIPE_SERIALIZER, id, serializer));
         //? if >=1.21.2 {
         ModRecipeBookCategories.register((id, category) -> Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, id, category));

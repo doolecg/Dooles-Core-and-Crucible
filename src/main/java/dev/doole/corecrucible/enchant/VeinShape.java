@@ -11,19 +11,19 @@ import java.util.List;
 public enum VeinShape {
     /** Every connected block of the same kind (or the same ore / log family), diagonals included. */
     // Each shape: its lang name and the Vein Resonance level needed to use it.
-    SHAPELESS("shapeless", 1),
-    /** A 1x1 tunnel straight into the mined face. */
-    SMALL_TUNNEL("small_tunnel", 1),
+    SEAM("seam", 1),
+    /** A 1x1 hole straight into the mined face. */
+    BORE("bore", 1),
     /** The 3x3 square around the mined block, facing the player. */
-    SMALL_SQUARE("small_square", 2),
+    FACET("facet", 2),
     /** A 3x3 tunnel straight into the mined face. */
-    LARGE_TUNNEL("large_tunnel", 3),
+    GALLERY("gallery", 3),
     /** A 1 wide, 2 tall tunnel a player can walk through. */
-    MINING_TUNNEL("mining_tunnel", 3),
+    DRIFT("drift", 3),
     /** A staircase climbing up and away from the player. */
-    ESCAPE_TUNNEL("escape_tunnel", 3),
+    RISE("rise", 3),
     /** A staircase stepping down and away from the player. */
-    MINESHAFT("mineshaft", 3);
+    DESCENT("descent", 3);
 
     private final String name;
     private final int requiredLevel;
@@ -54,10 +54,10 @@ public enum VeinShape {
         return shapes;
     }
 
-    /** The shape at {@code index}, falling back to Shapeless when it's out of range or still locked. */
+    /** The shape at {@code index}, falling back to Seam when it's out of range or still locked. */
     public static VeinShape effective(int index, int enchantmentLevel) {
         VeinShape[] shapes = values();
-        VeinShape shape = index >= 0 && index < shapes.length ? shapes[index] : SHAPELESS;
-        return shape.isUnlocked(enchantmentLevel) ? shape : SHAPELESS;
+        VeinShape shape = index >= 0 && index < shapes.length ? shapes[index] : SEAM;
+        return shape.isUnlocked(enchantmentLevel) ? shape : SEAM;
     }
 }

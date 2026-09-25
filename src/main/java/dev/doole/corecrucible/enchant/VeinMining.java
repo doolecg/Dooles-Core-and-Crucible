@@ -43,7 +43,7 @@ public final class VeinMining {
     /** Vein limit for tools outside the tier chain. */
     // RADIUS: how far (in blocks) from the first block a vein or tunnel can reach.
     private static final int DEFAULT_LIMIT = 16;
-    private static final int RADIUS = 16;
+    private static final int RADIUS = 12;
     public static final TagKey<Block> VEIN_MINEABLE = TagKey.create(Registries.BLOCK, CoreCrucible.id("vein_mineable"));
 
     /** Sent by the client whenever the Vein Resonance key or its selected shape changes. */
@@ -88,15 +88,20 @@ public final class VeinMining {
         return EnchantmentHooks.level(level, ModEnchantments.VEIN_RESONANCE, tool);
     }
 
-    /** Most extra blocks one break may take: 8 × (harvest level + 2) for chain tools, scaled by level (III is full). */
+    /**
+     * Most extra blocks one break may take, scaled by level (III is full). Chain tools: +8 per harvest level up to
+     * iron, then +4 per level above, so Wood 16, Iron 32, Diamond 36, Reinforced 48.
+     */
     public static int limit(ItemStack tool, int enchantmentLevel) {
         ModTiers tier = ModItems.tierOf(tool.getItem());
-        int base = tier != null ? 8 * (tier.harvestLevel() + 2) : DEFAULT_LIMIT;
+        int base = tier != null ? 16 + 8 * Math.min(tier.harvestLevel(), 2) + 4 * Math.max(tier.harvestLevel() - 2, 0)
+                : DEFAULT_LIMIT;
         return Math.max(1, Math.round(base * enchantmentLevel / 3.0F));
     }
 
+    /** How far a shape reaches: 4, 8 or 12 blocks at levels I, II and III. */
     private static int radius(int enchantmentLevel) {
-        return Math.max(RADIUS, Math.round(RADIUS * enchantmentLevel / 3.0F));
+        return Math.max(1, Math.round(RADIUS * enchantmentLevel / 3.0F));
     }
 
     /**
@@ -122,7 +127,7 @@ public final class VeinMining {
         // How many extra blocks, and how far, this tool and level allow.
         int limit = limit(tool, enchantmentLevel);
         int radius = radius(enchantmentLevel);
-        if (shape == VeinShape.SHAPELESS) {
+        if (shape == VeinShape.SEAM) {
             return connected(level, origin, state, limit, radius);
         }
 
@@ -136,14 +141,14 @@ public final class VeinMining {
 
         List<BlockPos> candidates = new ArrayList<>();
         switch (shape) {
-            case SMALL_TUNNEL -> {
+            case BORE -> {
                 for (int d = 0; d < radius; d++) candidates.add(origin.relative(into, d));
             }
-            case SMALL_SQUARE -> addSquare(candidates, origin, right, up);
-            case LARGE_TUNNEL -> {
+            case FACET -> addSquare(candidates, origin, right, up);
+            case GALLERY -> {
                 for (int d = 0; d < radius; d++) addSquare(candidates, origin.relative(into, d), right, up);
             }
-            case MINING_TUNNEL -> {
+            case DRIFT -> {
                 // Two tall: the mined block plus the one that lines the tunnel up with the player's feet and head.
                 Direction second = into.getAxis().isVertical() ? forward
                         : origin.getY() > player.getBlockY() ? Direction.DOWN : Direction.UP;
@@ -153,10 +158,10 @@ public final class VeinMining {
                     candidates.add(step.relative(second));
                 }
             }
-            case ESCAPE_TUNNEL, MINESHAFT -> {
+            case RISE, DESCENT -> {
                 // Climbs (or descends) one block per step from the player's feet, clearing three blocks of headroom.
                 BlockPos base = new BlockPos(origin.getX(), player.getBlockY(), origin.getZ());
-                int rise = shape == VeinShape.ESCAPE_TUNNEL ? 1 : -1;
+                int rise = shape == VeinShape.RISE ? 1 : -1;
                 for (int d = 0; d < radius; d++) {
                     BlockPos step = base.relative(forward, d).above(d * rise);
                     candidates.add(step);
@@ -198,7 +203,7 @@ public final class VeinMining {
         return sameVein(origin, state) || tool.getDestroySpeed(state) > 1.0F;
     }
 
-    // Shapeless: a flood fill. Starting at the mined block, keep adding touching blocks (diagonals too) of the same kind,
+    // Seam: a flood fill. Starting at the mined block, keep adding touching blocks (diagonals too) of the same kind,
     // until the limit or the radius is reached.
     private static List<BlockPos> connected(Level level, BlockPos origin, BlockState state, int limit, int radius) {
         List<BlockPos> vein = new ArrayList<>();

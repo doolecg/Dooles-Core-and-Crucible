@@ -34,8 +34,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Display;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -165,8 +164,9 @@ public final class EnchantmentHooks {
     public static void onBeforeBreak(ServerPlayer player, BlockState state) {
         ItemStack tool = player.getMainHandItem();
         Level level = player.level();
-        CAPTURES.push(new DropCapture(player, level(level, ModEnchantments.ENDERS_GRASP, tool),
-                level(level, ModEnchantments.GEODE_CRACKER, tool)));
+        // No Geode Cracker on blocks with a block entity: a chest's spilled contents would otherwise be multiplied.
+        int geode = state.hasBlockEntity() ? 0 : level(level, ModEnchantments.GEODE_CRACKER, tool);
+        CAPTURES.push(new DropCapture(player, level(level, ModEnchantments.ENDERS_GRASP, tool), geode));
         BREAKING.push(state);
     }
 
@@ -278,8 +278,10 @@ public final class EnchantmentHooks {
         return Math.min(0.1F * streak.hits, 0.2F + 0.1F * enchantmentLevel);
     }
 
-    /** Before damage is applied; returns true to cancel it (Phalanx Ward). */
+    /** Before damage is applied; returns true to cancel it (Molten Tread, Phalanx Ward). */
     public static boolean onLivingHurt(ServerLevel level, LivingEntity victim, DamageSource source) {
+        // Molten Tread: magma's floor heat doesn't hurt the wearer.
+        if (source.is(DamageTypes.HOT_FLOOR) && level(victim, ModEnchantments.MOLTEN_TREAD) > 0) return true;
         // Volatile Payload: an armed arrow that hits a mob explodes (at the end of the tick).
         if (source.getDirectEntity() instanceof AbstractArrow arrow) {
             Float power = VOLATILE_ARROWS.remove(arrow);
@@ -540,11 +542,7 @@ public final class EnchantmentHooks {
     // Turns lava source blocks in a circle under the player into magma, and schedules them to melt back after 5-8 seconds.
     private static void moltenTread(ServerLevel level, Player player) {
         int enchantmentLevel = level(level, ModEnchantments.MOLTEN_TREAD, player.getItemBySlot(EquipmentSlot.FEET));
-        if (enchantmentLevel <= 0) return;
-        if (player.getBlockStateOn().is(Blocks.MAGMA_BLOCK)) {
-            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 40, 0, true, false));
-        }
-        if (!player.onGround()) return;
+        if (enchantmentLevel <= 0 || !player.onGround()) return;
         int radius = 1 + enchantmentLevel;
         BlockPos below = player.blockPosition().below();
         long now = level.getGameTime();

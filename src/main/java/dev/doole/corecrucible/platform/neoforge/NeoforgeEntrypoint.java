@@ -22,7 +22,11 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
+import java.util.List;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.registries.RegisterEvent;
 //? if >=1.21.2 {
@@ -55,6 +59,23 @@ public class NeoforgeEntrypoint {
         //? if >=1.21.2 {
         event.register(Registries.RECIPE_BOOK_CATEGORY, helper -> ModRecipeBookCategories.register(helper::register));
         //?}
+    }
+
+    // Slots mod items into vanilla's Tools, Combat and Ingredients tabs next to their vanilla neighbours.
+    @SubscribeEvent
+    private static void onBuildTabContents(BuildCreativeModeTabContentsEvent event) {
+        List<ModCreativeTab.Placement> placements = ModCreativeTab.vanillaPlacements().get(event.getTabKey());
+        if (placements == null) return;
+        for (ModCreativeTab.Placement placement : placements) {
+            ItemStack stack = new ItemStack(placement.item());
+            ItemStack anchor = placement.anchor() == null ? ItemStack.EMPTY : new ItemStack(placement.anchor());
+            // insertAfter throws when the anchor isn't in the tab, so a missing anchor just appends.
+            if (!anchor.isEmpty() && event.getParentEntries().contains(anchor)) {
+                event.insertAfter(anchor, stack, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+            } else {
+                event.accept(stack, CreativeModeTab.TabVisibility.PARENT_TAB_ONLY);
+            }
+        }
     }
 
     // Registers the two client-to-server network messages and hooks their handlers up to the shared Events class.

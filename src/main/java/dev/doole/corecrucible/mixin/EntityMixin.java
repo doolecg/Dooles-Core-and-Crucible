@@ -8,6 +8,7 @@ import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 // Aegis Reflection turns projectiles back like a Breeze does.
@@ -20,5 +21,11 @@ public abstract class EntityMixin {
                 && EnchantmentHooks.aegisReflects(defender, projectile)) {
             cir.setReturnValue(ProjectileDeflection.REVERSE);
         }
+    }
+
+    // Gravitic Anchor: pushes can't lift the wearer (a mace smash, a Warden's sonic boom). Argument 1 is the upward push.
+    @ModifyVariable(method = "push(DDD)V", at = @At("HEAD"), ordinal = 1, argsOnly = true)
+    private double dooles_core_crucible$anchorPush(double dy) {
+        return dy > 0.0 && (Object) this instanceof LivingEntity living && EnchantmentHooks.hasGraviticAnchor(living) ? 0.0 : dy;
     }
 }

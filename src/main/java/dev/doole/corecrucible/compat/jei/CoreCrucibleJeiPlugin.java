@@ -2,8 +2,14 @@ package dev.doole.corecrucible.compat.jei;
 
 import dev.doole.corecrucible.CoreCrucible;
 import dev.doole.corecrucible.compat.ForgingDisplays;
+import dev.doole.corecrucible.registry.ModCreativeTab;
+import dev.doole.corecrucible.registry.ModEnchantments;
 import dev.doole.corecrucible.registry.ModItems;
 import dev.doole.corecrucible.registry.ModTiers;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.enchantment.Enchantment;
 import java.util.ArrayList;
 import java.util.List;
 import mezz.jei.api.IModPlugin;
@@ -55,6 +61,26 @@ public class CoreCrucibleJeiPlugin implements IModPlugin {
         registration.addItemStackInfo(templates, Component.translatable(INFO + "upgrade_template"));
         registration.addItemStackInfo(List.of(new ItemStack(Items.GHAST_TEAR), new ItemStack(Items.WITHER_SKELETON_SKULL), new ItemStack(Items.NETHER_STAR)),
                 Component.translatable(INFO + "catalyst"));
+        addEnchantmentInfo(registration);
+    }
+
+    // One info page per mod enchantment, on its enchanted book at every level: what it does and its max level (text
+    // under jei.dooles_core_crucible.info.enchantment.*). Enchantments are data, so they're read from the world's
+    // registries, which JEI has loaded by the time it registers recipes.
+    private static void addEnchantmentInfo(IRecipeRegistration registration) {
+        ClientLevel level = Minecraft.getInstance().level;
+        if (level == null) return;
+        for (ResourceKey<Enchantment> key : ModEnchantments.ALL) {
+            List<ItemStack> books = ModCreativeTab.enchantedBooks(level.registryAccess(), key);
+            if (books.isEmpty()) continue;
+            //? if >=1.21.2 {
+            String name = key.identifier().getPath();
+            //?} else {
+            /*String name = key.location().getPath();
+            *///?}
+            registration.addItemStackInfo(books, Component.translatable(INFO + "enchantment." + name),
+                    Component.translatable(INFO + "enchantment.max_level", books.size()));
+        }
     }
 
     @Override
