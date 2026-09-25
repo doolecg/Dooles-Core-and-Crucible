@@ -4,14 +4,17 @@ This is a Minecraft mod that changes how you get better tools, weapons and armou
 
 You start with wooden gear and work your way up through bone, flint, copper, iron, emerald, diamond, obsidian, netherite and finally reinforced netherite. From iron onwards, you upgrade your gear at the smithing table. Your gear keeps its name, its enchantments and how worn it is when you upgrade it.
 
+The current version is **0.3.0**. See the [changelog](CHANGELOG.md) for every version, or the [0.3.0 release notes](release-notes/0.3.0.md).
+
 ## What's in it
 
 - Nine tiers of tools, weapons, spears, maces and armour
 - Bows, crossbows, fishing rods, shears, shields, horse armour and wolf armour for each tier
 - Alloy ingots and upgrade templates, plus a catalyst slot in the smithing table for the top tiers
-- 15 new enchantments
+- 15 new enchantments, including Vein Resonance for mining whole veins and tunnels at once
 - Ore veins that replace the normal ore blobs
 - A recipe book for the smithing table, an advancements tab, and a tooltip that shows an item's stats when you hold shift
+- Its own creative tab (with every enchanted book), and its items also appear in the vanilla Tools, Combat and Ingredients tabs
 
 ## Getting started
 
@@ -115,11 +118,23 @@ You can also copy a template, just like the normal netherite template. Put the t
 | Netherite | Uses the normal copying recipe |
 | Reinforced | Obsidian alloy ingot |
 
+## Vein Resonance
+
+Vein Resonance goes on mining tools. Hold **Left Alt** while mining to break a whole shape at once, and scroll while holding it to pick the shape. You can change the key in Controls.
+
+| Level | Shapes |
+|---|---|
+| I | Seam (every touching block of the same ore or log), Bore (a 1-wide hole) |
+| II | adds Facet (a 3×3 face) |
+| III | adds Gallery (a 3×3 tunnel), Drift (a 1×2 tunnel you can walk through), Rise (stairs going up), Descent (stairs going down) |
+
+Shapes reach 4, 8 or 12 blocks depending on the level. Better tools break more blocks at once, up to 48 with reinforced netherite. It stops before your tool breaks.
+
 ## Versions
 
 The mod works on Minecraft 1.21.1, 26.2 and 26.3, with either Fabric or NeoForge. On Fabric you also need Fabric API.
 
-JEI is not needed, but if you have it installed, the mod adds its smithing recipes to it.
+JEI is not needed, but if you have it installed, the mod adds its smithing recipes to it and explains each of its enchantments on the enchanted books.
 
 ## Changing things
 
@@ -129,7 +144,7 @@ Recipes, item names, tags and advancements are made by the script `tools/gen_dat
 
 Textures are made by `tools/gen_textures.py`, which recolours the normal Minecraft textures. Build the mod once first, then run `python tools/gen_textures.py`.
 
-The enchantments are in `src/main/resources/data/dooles_core_crucible/enchantment/`.
+The enchantments are also made by `tools/gen_data.py`, which writes them to `src/main/resources/data/dooles_core_crucible/enchantment/` (Gravitic Anchor's differs by version, so it is in `src/main/versioned/`). The script also holds the enchantment descriptions JEI shows.
 
 Modpack makers can also change any recipe or tag with a datapack.
 
@@ -141,7 +156,15 @@ You need Java 21 for Minecraft 1.21.1 and Java 25 for 26.2 and 26.3. Gradle can 
 ./gradlew build
 ```
 
-The finished jar files go in `versions/<version>-<loader>/build/libs/`.
+The finished jar files go in `versions/<version>-<loader>/build/libs/`, and a copy of each is put straight into `versions/`.
+
+To make a release, change `mod.version` in `stonecutter.properties.toml`, then run:
+
+```
+./gradlew build buildAndCollect
+```
+
+This puts every jar, with its sources jar, in `build/libs/<mod version>/`. Write the release notes in `release-notes/<mod version>.md`.
 
 ## Licence
 
