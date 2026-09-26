@@ -27,6 +27,8 @@ HOME = Path(os.path.expanduser("~"))
 JAR_26 = HOME / ".gradle/caches/fabric-loom/26.3/minecraft-client.jar"
 JAR_121 = HOME / ".gradle/caches/fabric-loom/1.21.1/minecraft-client.jar"
 OUT = Path(__file__).resolve().parent.parent / "src/main/resources/assets/dooles_core_crucible/textures"
+# Per-version textures, added only to that Minecraft version's build (see the versioned folders in tools/gen_data.py).
+VERSIONED = Path(__file__).resolve().parent.parent / "src/main/versioned"
 
 # Tier colours. Obsidian gear shares the obsidian alloy colour (Applied-Enchantments' 0x3B2754) so it reads as that
 # alloy; Reinforced has its own steel-blue hue instead of netherite grey.
@@ -92,10 +94,11 @@ def load(rel, jar=JAR_26):
     return Image.open(io.BytesIO(_jars[jar].read(f"assets/minecraft/textures/{rel}"))).convert("RGBA")
 
 
-def save(img, rel):
-    """Writes an image under the mod's texture folder, skipping the write when the file already has these bytes."""
+def save(img, rel, version=None):
+    """Writes an image under the mod's texture folder (or that version's own copy of it), skipping the write when the
+    file already has these bytes."""
     global written, unchanged
-    path = OUT / rel
+    path = (OUT if version is None else VERSIONED / version / "assets/dooles_core_crucible/textures") / rel
     buf = io.BytesIO()
     img.save(buf, format="PNG")
     data = buf.getvalue()
@@ -505,11 +508,14 @@ def darker_palette(palette):
 def make_trim_palettes():
     """Palettes for a trim on mod armor of the same colour (see armor_trims() in gen_data.py). Emerald's is made here;
     Copper's is vanilla 26.x's own, for the 1.21.1 Copper armor. 1.21.1 and 26.2 read palettes from
-    trims/color_palettes/, 26.3 from palettes/trim/."""
+    trims/color_palettes/, 26.3 from palettes/trim/. The trims/color_palettes/ copies go only to 1.21.1 and 26.2:
+    NeoForge 26.3 still builds item trims from every palette in that folder, against a base palette 26.3 no longer
+    has, and the broken sprites replace the working ones (vanilla's copper armor icons included)."""
     emerald = darker_palette(load("trims/color_palettes/emerald.png", JAR_121))
-    save(emerald, "trims/color_palettes/emerald_darker.png")
-    save(emerald, "palettes/trim/emerald_darker.png")
-    save(load("palettes/trim/copper_darker.png"), "trims/color_palettes/copper_darker.png")
+    save(emerald, "palettes/trim/emerald_darker.png", "26.3")
+    for version in ("1.21.1", "26.2"):
+        save(emerald, "trims/color_palettes/emerald_darker.png", version)
+    save(load("palettes/trim/copper_darker.png"), "trims/color_palettes/copper_darker.png", "1.21.1")
 
 
 def shield_icon(texture):

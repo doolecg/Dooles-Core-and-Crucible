@@ -4,7 +4,7 @@ This is a Minecraft mod that changes how you get better tools, weapons and armou
 
 You start with wooden gear and work your way up through bone, flint, copper, iron, emerald, diamond, obsidian, netherite and finally reinforced netherite. From iron onwards, you upgrade your gear at the smithing table. Your gear keeps its name and its enchantments when you upgrade it, and comes out fully repaired.
 
-The current version is **0.3.1**. See the [changelog](CHANGELOG.md) for every version, or the release notes for the last big update, [0.3.0](release-notes/0.3.0.md).
+The current version is **0.3.1**. See the [changelog](CHANGELOG.md) for every version, or the [0.3.1 release notes](release-notes/0.3.1.md).
 
 ## What's in it
 
