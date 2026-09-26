@@ -210,6 +210,8 @@ tasks {
 
         // Data whose JSON differs by version (vanilla ingredient syntax); see tools/gen_data.py.
         from(rootProject.file("src/main/versioned/${if (sc.current.parsed >= "1.21.2") "26" else "1.21.1"}"))
+        // Armor trim atlases and trim materials, whose format changed again in 26.3; see gen_trim_overrides in tools/gen_data.py.
+        if (sc.current.parsed >= "1.21.2") from(rootProject.file("src/main/versioned/${sc.current.version}"))
         exclude { it.path.startsWith("aw/") && it.path != at }
     }
 

@@ -2,9 +2,9 @@
 
 This is a Minecraft mod that changes how you get better tools, weapons and armour.
 
-You start with wooden gear and work your way up through bone, flint, copper, iron, emerald, diamond, obsidian, netherite and finally reinforced netherite. From iron onwards, you upgrade your gear at the smithing table. Your gear keeps its name, its enchantments and how worn it is when you upgrade it.
+You start with wooden gear and work your way up through bone, flint, copper, iron, emerald, diamond, obsidian, netherite and finally reinforced netherite. From iron onwards, you upgrade your gear at the smithing table. Your gear keeps its name and its enchantments when you upgrade it, and comes out fully repaired.
 
-The current version is **0.3.0**. See the [changelog](CHANGELOG.md) for every version, or the [0.3.0 release notes](release-notes/0.3.0.md).
+The current version is **0.3.1**. See the [changelog](CHANGELOG.md) for every version, or the release notes for the last big update, [0.3.0](release-notes/0.3.0.md).
 
 ## What's in it
 
@@ -38,7 +38,7 @@ Every upgrade from copper to iron and above is done at the smithing table. You n
 - the piece of gear you want to upgrade, from the tier below
 - an alloy ingot for the new tier
 
-The template is used up. The new item keeps its name, enchantments, armour trim and how worn it is. For example, a half-worn iron pickaxe becomes a half-worn emerald pickaxe.
+The template is used up. The new item keeps its name, enchantments and armour trim, and comes out at full durability. For example, a half-worn iron pickaxe becomes a brand-new emerald pickaxe.
 
 The top three tiers also need a catalyst. A small extra slot appears in the smithing table when your item needs one:
 

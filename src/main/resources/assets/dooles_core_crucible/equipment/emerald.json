@@ -20,5 +20,13 @@
         "texture": "dooles_core_crucible:emerald"
       }
     ]
-  }
+  },
+  "trim_overrides": [
+    {
+      "palette": "dooles_core_crucible:trim/emerald_darker",
+      "when": {
+        "material": "minecraft:emerald"
+      }
+    }
+  ]
 }

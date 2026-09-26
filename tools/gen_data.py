@@ -12,7 +12,8 @@ generated JSON by hand, the next run overwrites it. Gear stats are not here: the
 
 Data that loads on every version goes to src/main/resources. Vanilla-format recipes differ by
 version (1.21.1 writes ingredients as {"item": ...}, 26.x as plain ids), so they go to
-src/main/versioned/<1.21.1|26>, which the Gradle builds add per target.
+src/main/versioned/<1.21.1|26>, which the Gradle builds add per target. Armor trim atlases and trim materials also
+differ between 26.2 and 26.3, so those go to src/main/versioned/<26.2|26.3>, added on that exact version only.
 """
 import json
 import sys
@@ -209,6 +210,9 @@ def gen_assets():
             for colour in DYES:
                 lang[f"item.{MOD}.{item_id}.{colour}"] = f"{title(colour)} {name}"
             continue
+        if kind in ARMOR:
+            armor_models(item_id, tier, kind)
+            continue
         write(ASSETS / "models" / "item" / f"{item_id}.json",
               {"parent": f"minecraft:item/{model_parent(item_id, kind)}", "textures": {"layer0": f"{MOD}:item/{item_id}"}})
         model = {"type": "minecraft:model", "model": f"{MOD}:item/{item_id}"}
@@ -250,7 +254,12 @@ def gen_assets():
         if availability(tier, "wolf_armor") == "all":
             layers["wolf_body"] = [{"texture": texture}]
         if layers:
-            write(ASSETS / "equipment" / f"{tier}.json", {"layers": layers})
+            asset = {"layers": layers}
+            if "humanoid" in layers and tier in DARKER_TRIMS:
+                # 26.3 reads same-colour trims from here; 26.2 ignores the field (see gen_trim_overrides).
+                material, palette = DARKER_TRIMS[tier]
+                asset["trim_overrides"] = [{"palette": palette_id(palette), "when": {"material": f"minecraft:{material}"}}]
+            write(ASSETS / "equipment" / f"{tier}.json", asset)
     return lang
 
 
@@ -298,6 +307,58 @@ def launcher_models(item_id, tier, kind):
     for suffix in states:
         write(models / f"{item_id}{suffix}.json", {"parent": f"minecraft:item/{kind}", "textures": {"layer0": ref(suffix)}})
     write(ASSETS / "items" / f"{item_id}.json", {"model": definition})
+
+
+# Vanilla trim materials in vanilla's order, with the "trim_type" value 1.21.1's item model overrides match on.
+# Resin is 26.x only, so it has no 1.21.1 value.
+TRIM_MATERIALS = [("quartz", 0.1), ("iron", 0.2), ("netherite", 0.3), ("redstone", 0.4), ("copper", 0.5),
+                  ("gold", 0.6), ("emerald", 0.7), ("diamond", 0.8), ("lapis", 0.9), ("amethyst", 1.0), ("resin", None)]
+# Mod armor the same colour as a trim material draws that trim with a darker palette, like vanilla's iron trim on iron
+# armor: tier -> (trim material, palette). Netherite's darker palette is vanilla's; the others are in MOD_PALETTES.
+DARKER_TRIMS = {"copper": ("copper", "copper_darker"), "emerald": ("emerald", "emerald_darker"),
+                "reinforced": ("netherite", "netherite_darker")}
+# Darker palettes vanilla doesn't have, and the versions the mod adds them on (26.x has its own copper_darker). The
+# textures come from gen_textures.py.
+MOD_PALETTES = {"emerald_darker": ["1.21.1", "26.2", "26.3"], "copper_darker": ["1.21.1"]}
+# Vanilla's armor trim patterns, for the worn-trim atlas sources on 1.21.1 and 26.2.
+TRIM_PATTERNS = ["sentry", "dune", "coast", "wild", "ward", "eye", "vex", "tide", "snout", "rib", "spire", "wayfinder",
+                 "shaper", "silence", "raiser", "host", "flow", "bolt"]
+# The vanilla trim materials that gen_trim_overrides() replaces: colour, ingredient, 1.21.1 item_model_index.
+VANILLA_TRIM_MATERIALS = {"copper": ("#B4684D", "minecraft:copper_ingot", 0.5),
+                          "emerald": ("#11A036", "minecraft:emerald", 0.7),
+                          "netherite": ("#625859", "minecraft:netherite_ingot", 0.3)}
+
+
+def palette_id(palette):
+    """26.3's id for a trim palette (textures/palettes/trim/<name>.png)."""
+    return f"{MOD if palette in MOD_PALETTES else 'minecraft'}:trim/{palette}"
+
+
+def trim_suffix(tier, material):
+    """The palette a trim of this material uses on this tier's armor: the material's own, or its darker one."""
+    darker = DARKER_TRIMS.get(tier)
+    return darker[1] if darker and darker[0] == material else material
+
+
+def armor_models(item_id, tier, kind):
+    """Armor models with vanilla's trim overlays: the icon plus vanilla's paletted trims/items/<kind>_trim_<material>
+    sprite (the icons are recoloured vanilla iron armor, so the overlays line up). 1.21.1 picks a trim model with a
+    "trim_type" override; 26.x reads the items/ definition's trim_material select instead. Worn trims need nothing
+    here: vanilla draws them over any trimmable armor, and gen_trim_overrides() picks the darker same-colour ones."""
+    models = ASSETS / "models" / "item"
+    ref = f"{MOD}:item/{item_id}"
+    materials = [(m, v) for m, v in TRIM_MATERIALS if v is not None or availability(tier, kind) == "all"]
+    for material, _value in materials:
+        write(models / f"{item_id}_{material}_trim.json", {"parent": "minecraft:item/generated", "textures": {
+            "layer0": ref, "layer1": f"minecraft:trims/items/{kind}_trim_{trim_suffix(tier, material)}"}})
+    write(models / f"{item_id}.json", {"parent": "minecraft:item/generated", "textures": {"layer0": ref},
+                                       "overrides": [{"predicate": {"trim_type": v}, "model": f"{ref}_{m}_trim"}
+                                                     for m, v in materials if v is not None]})
+    write(ASSETS / "items" / f"{item_id}.json", {"model": {
+        "type": "minecraft:select", "property": "minecraft:trim_material",
+        "cases": [{"when": f"minecraft:{m}", "model": {"type": "minecraft:model", "model": f"{ref}_{m}_trim"}}
+                  for m, _v in materials],
+        "fallback": {"type": "minecraft:model", "model": ref}}})
 
 
 def rod_models(item_id):
@@ -1115,6 +1176,68 @@ ORE_PLACEMENTS = {
 }
 
 
+def gen_trim_overrides():
+    """Wires up DARKER_TRIMS for worn trims and the trim atlases on each version (the item models are armor_models()):
+    26.3: the equipment asset's trim_overrides (gen_assets), plus the mod palettes in the items atlas.
+    26.2: vanilla's trim materials again with an override_armor_assets entry per mod armor, plus the mod palettes in
+          the armor_trims and items atlases.
+    1.21.1: the same with override_armor_materials, keyed by the mod's armor materials; item trims are in the blocks
+            atlas and worn ones use the older trims/models/armor/<pattern>(_leggings) textures.
+    Atlas sources from every pack are merged, so these only add the mod's palettes to vanilla's permutations."""
+    def permutations(version, prefix):
+        return {p: f"{MOD}:{prefix}{p}" for p, versions in MOD_PALETTES.items() if version in versions}
+
+    def atlas(palette_key, perms, textures):
+        return {"sources": [{"type": "minecraft:paletted_permutations", "textures": textures,
+                             "palette_key": palette_key, "permutations": perms}]}
+
+    item_trims = [f"minecraft:trims/items/{kind}_trim" for kind in ARMOR]
+    old_palette = "minecraft:trims/color_palettes/trim_palette"
+
+    def trim_material(material, overrides_key, overrides, legacy):
+        colour, ingredient, index = VANILLA_TRIM_MATERIALS[material]
+        out = {"asset_name": material, "description": {"color": colour, "translate": f"trim_material.minecraft.{material}"}}
+        if legacy:
+            out |= {"ingredient": ingredient, "item_model_index": index}
+        out[overrides_key] = overrides
+        return out
+
+    def material_overrides(version, vanilla_darker):
+        """trim material -> {armor id: palette} for the tiers that have mod armor on this version."""
+        out = {}
+        for tier, (material, palette) in DARKER_TRIMS.items():
+            if availability(tier, "helmet") == "all" or version == "1.21.1":
+                out.setdefault(material, dict(vanilla_darker.get(material, {})))[f"{MOD}:{tier}"] = palette
+        return out
+
+    # 26.3
+    root = VERSIONED / "26.3"
+    write(root / "assets" / "minecraft" / "atlases" / "items.json",
+          atlas("minecraft:trim_base", permutations("26.3", "trim/"), item_trims))
+
+    # 26.2
+    root = VERSIONED / "26.2"
+    perms = permutations("26.2", "trims/color_palettes/")
+    write(root / "assets" / "minecraft" / "atlases" / "items.json", atlas(old_palette, perms, item_trims))
+    write(root / "assets" / "minecraft" / "atlases" / "armor_trims.json", atlas(old_palette, perms, [
+        f"minecraft:trims/entity/{layer}/{p}" for p in TRIM_PATTERNS for layer in ("humanoid", "humanoid_leggings")]))
+    vanilla = {"netherite": {"minecraft:netherite": "netherite_darker"}, "copper": {"minecraft:copper": "copper_darker"}}
+    for material, overrides in material_overrides("26.2", vanilla).items():
+        write(root / "data" / "minecraft" / "trim_material" / f"{material}.json",
+              trim_material(material, "override_armor_assets", overrides, legacy=False))
+
+    # 1.21.1
+    root = VERSIONED / "1.21.1"
+    perms = permutations("1.21.1", "trims/color_palettes/")
+    write(root / "assets" / "minecraft" / "atlases" / "blocks.json", atlas(old_palette, perms, item_trims))
+    write(root / "assets" / "minecraft" / "atlases" / "armor_trims.json", atlas(old_palette, perms, [
+        f"minecraft:trims/models/armor/{p}{suffix}" for p in TRIM_PATTERNS for suffix in ("", "_leggings")]))
+    vanilla = {"netherite": {"minecraft:netherite": "netherite_darker"}}
+    for material, overrides in material_overrides("1.21.1", vanilla).items():
+        write(root / "data" / "minecraft" / "trim_material" / f"{material}.json",
+              trim_material(material, "override_armor_materials", overrides, legacy=True))
+
+
 def gen_worldgen():
     """Switches off vanilla's blob ore placements; the Java vein generator replaces them."""
     for name, feature in ORE_PLACEMENTS.items():
@@ -1165,6 +1288,7 @@ if __name__ == "__main__":
     gen_enchantments()
     gen_advancements()
     gen_worldgen()
+    gen_trim_overrides()
     write(ASSETS / "lang" / "en_us.json", lang | tag_lang())
     if not sync(check):
         sys.exit("Generated data is out of date: run python tools/gen_data.py")

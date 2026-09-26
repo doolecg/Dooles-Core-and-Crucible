@@ -17,7 +17,7 @@ import net.minecraft.world.item.crafting.SmithingRecipeInput;
 /**
  * Copper → Iron and above: the tier's upgrade template, the previous tier's piece
  * and the tier's alloy ingot. The template is used up; the piece keeps its name,
- * enchantments and wear ({@link UpgradeLogic}).
+ * enchantments and trim, and comes out fully repaired ({@link UpgradeLogic}).
  * <p>JSON: {@code {"type": "dooles_core_crucible:progression_smithing", "slot": "pickaxe", "tier": "emerald"}}
  */
 public class ProgressionSmithingRecipe extends ModSmithingRecipe {

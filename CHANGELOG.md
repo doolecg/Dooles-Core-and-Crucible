@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1
+- Mod armor (Copper on 1.21.1, Emerald, Obsidian, Reinforced) now shows its armor trim on the item icon
+- A trim that matches its armor's colour (Emerald on Emerald, Netherite on Reinforced Netherite, Copper on Copper) uses a darker shade, like vanilla's Iron on Iron, so it still stands out
+- Upgrading gear at the smithing table now fully repairs it, instead of carrying over its wear
+
 ## 0.3.0
 - Mod items now also appear in vanilla's Tools, Combat and Ingredients creative tabs, in tier order next to their vanilla neighbours
 - The mod's creative tab now lists an enchanted book for every level of every mod enchantment

@@ -1,6 +1,5 @@
 package dev.doole.corecrucible.recipe;
 
-import dev.doole.corecrucible.util.DamageScaling;
 import java.util.List;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
@@ -9,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 
 /**
  * Builds the result of a tier upgrade. The new piece keeps the old one's name, lore, enchantments, repair cost and
- * trim ({@link #KEPT}), and its damage is scaled to the new max durability so the same share of it is used up.
+ * trim ({@link #KEPT}). Wear is not carried over: the upgraded piece comes out at full durability.
  */
 public final class UpgradeLogic {
 
@@ -27,12 +26,7 @@ public final class UpgradeLogic {
     /** Upgrades {@code base} into {@code result}. */
     public static ItemStack upgrade(ItemStack base, Item result) {
         ItemStack out = new ItemStack(result);
-        // Copy the kept data, then carry over wear: a half-worn Iron pickaxe becomes a half-worn Emerald pickaxe.
         for (DataComponentType<?> type : KEPT) copy(base, out, type);
-
-        if (base.isDamageableItem() && out.isDamageableItem()) {
-            out.setDamageValue(DamageScaling.scale(base.getDamageValue(), base.getMaxDamage(), out.getMaxDamage()));
-        }
         return out;
     }
 

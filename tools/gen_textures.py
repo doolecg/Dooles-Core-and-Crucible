@@ -484,6 +484,34 @@ def make():
             save(add_shiny_edges(img, tinted, f"{tier}_{state}", edge_strength(tier)), f"item/{tier}_{state}.png")
 
 
+def darker_palette(palette):
+    """A trim palette for a trim on armor of its own colour, like vanilla's iron_darker: the palette moved about three
+    shades down (read from 1.5 steps in), with the shades past its darkest end extrapolated by darkening that end."""
+    colours = [palette.getpixel((x, 0)) for x in range(palette.width)]
+    out = Image.new("RGBA", palette.size)
+    for i in range(palette.width):
+        t = 1.5 + i
+        last = len(colours) - 1
+        if t <= last:
+            a, b = colours[int(t)], colours[min(int(t) + 1, last)]
+            f = t - int(t)
+            c = tuple(round(a[k] + (b[k] - a[k]) * f) for k in range(3))
+        else:
+            c = tuple(round(v * 0.72 ** (t - last)) for v in colours[last][:3])
+        out.putpixel((i, 0), c + (255,))
+    return out
+
+
+def make_trim_palettes():
+    """Palettes for a trim on mod armor of the same colour (see armor_trims() in gen_data.py). Emerald's is made here;
+    Copper's is vanilla 26.x's own, for the 1.21.1 Copper armor. 1.21.1 and 26.2 read palettes from
+    trims/color_palettes/, 26.3 from palettes/trim/."""
+    emerald = darker_palette(load("trims/color_palettes/emerald.png", JAR_121))
+    save(emerald, "trims/color_palettes/emerald_darker.png")
+    save(emerald, "palettes/trim/emerald_darker.png")
+    save(load("palettes/trim/copper_darker.png"), "trims/color_palettes/copper_darker.png")
+
+
 def shield_icon(texture):
     """A 16×16 item texture from a shield texture's front face (12×22 at 1,1 in the ShieldModel layout), squeezed to
     fit. Only used as the shield's break particle: the item itself is drawn by the shield renderer."""
@@ -501,5 +529,6 @@ def make_icon():
 
 if __name__ == "__main__":
     make()
+    make_trim_palettes()
     make_icon()
     print(f"{written} textures written, {unchanged} unchanged, in {OUT}")

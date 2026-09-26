@@ -2,5 +2,67 @@
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "dooles_core_crucible:item/copper_leggings"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "trim_type": 0.1
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_quartz_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.2
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_iron_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.3
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_netherite_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.4
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_redstone_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.5
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_copper_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.6
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_gold_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.7
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_emerald_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.8
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_diamond_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 0.9
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_lapis_trim"
+    },
+    {
+      "predicate": {
+        "trim_type": 1.0
+      },
+      "model": "dooles_core_crucible:item/copper_leggings_amethyst_trim"
+    }
+  ]
 }

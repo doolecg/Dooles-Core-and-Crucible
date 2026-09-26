@@ -1,0 +1,17 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:paletted_permutations",
+      "textures": [
+        "minecraft:trims/items/helmet_trim",
+        "minecraft:trims/items/chestplate_trim",
+        "minecraft:trims/items/leggings_trim",
+        "minecraft:trims/items/boots_trim"
+      ],
+      "palette_key": "minecraft:trim_base",
+      "permutations": {
+        "emerald_darker": "dooles_core_crucible:trim/emerald_darker"
+      }
+    }
+  ]
+}

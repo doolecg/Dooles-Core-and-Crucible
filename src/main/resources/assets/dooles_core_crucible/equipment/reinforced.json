@@ -20,5 +20,13 @@
         "texture": "dooles_core_crucible:reinforced"
       }
     ]
-  }
+  },
+  "trim_overrides": [
+    {
+      "palette": "minecraft:trim/netherite_darker",
+      "when": {
+        "material": "minecraft:netherite"
+      }
+    }
+  ]
 }
