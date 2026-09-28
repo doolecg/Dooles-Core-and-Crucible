@@ -38,20 +38,3 @@ plans/
 .plans/
 ai-plans/
 ai_plans/
-
-# AI assistant files
-CLAUDE.md
-CLAUDE.local.md
-AGENTS.md
-GEMINI.md
-.claude/
-.cursor/
-.cursorrules
-.windsurf/
-.windsurfrules
-.aider*
-.codex/
-.gemini/
-.continue/
-.github/copilot-instructions.md
-*.prompt.md
